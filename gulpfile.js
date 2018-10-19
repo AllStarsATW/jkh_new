@@ -12,8 +12,6 @@ var bs = require('browser-sync').create();
 var sass = require('gulp-sass');
 var rigger = require('gulp-rigger');
 var reload = bs.reload;
-var rev = require('gulp-rev');
-var revReplace = require('gulp-rev-replace');
 
 var del = require('del');
 var minCss = require('gulp-minify-css');

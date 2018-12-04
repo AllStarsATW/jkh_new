@@ -1,139 +1,261 @@
+$seatch_icon: 'f002'
+
+
+
 // topline stiles
 .header
   display: block
-.header:before
-  background-color: $block-bg
-  right: 0
-  left: 0
+  &:before
+    background-color: $accent-second-hover
+    right: 0
+    left: 0
+    height: 40px
+    content: ''
+    position: absolute
+    z-index: -2
+  &:after
+    background-color: $accent-first
+    right: 0
+    left: 0
+    margin-top: -44px
+    height: 44px
+    content: ''
+    position: absolute
+    z-index: -2
+.top-line
   height: 40px
-  content: ''
-  position: absolute
-.header:after
-  background-color: $accent-first
-  right: 0
-  left: 0
-  margin-top: -44px
-  height: 44px
-  content: ''
-  position: absolute
-  z-index: -1
-.header_topline
-  height: 40px
-.header_search > input
-  padding: 5px
-  height: 30px
-.submenu_links
-  float: right
-.submenu_links > input
-  padding: 0 5px
-  height: 30px
-  font-size: 16px
-.submenu_links > span > a
-  color: $accent-second
-  text-decoration: none
-  font-weight: 400
-  font-size: 16px
-  display: inline-block
-.submenu_links > span > a:hover
-  color: $white
-.submenu_links > span+span:before
-  content: '|'
-  margin-right: 5px
-  font-weight: 100
-
+  &__search
+    padding: 0 5px
+    &.i-active
+      & form
+        z-index: 1
+        & > button
+          opacity: 1
+        & > input[type=search]
+          opacity: 1
+          width: 320px
+    &-icon
+      height: 30px
+      width: 30px
+      display: inline-block
+      color: $header-bg
+      border: 1px solid $header-bg
+      border-radius: 3px
+      font-weight: 400
+      line-height: 30px
+      padding: 0 7px
+    &-icon:hover
+      background-color: $header-bg
+      color: $accent-second-hover
+      text-decoration: none
+    &-icon > i
+      margin-right: 5px
+    &-icon:hover
+      outline: none
+    &-form
+      position: absolute
+      top: 0
+      left: 20px
+      z-index: -1
+      width: 350px
+    &-form > button
+      border: none
+      width: 30px
+      height: 30px
+      background: $header-bg
+      border-radius: 5px 0 0 5px
+      cursor: pointer
+      color: $accent-second
+      outline: none
+      padding: 0
+      margin: 0
+      line-height: normal
+      transition: all .3s ease-in
+      opacity: 0
+    &-form > input[type=search]
+      border: none
+      background: $header-bg
+      border-radius: 0 5px 5px 0
+      display: inline-block
+      height: 30px
+      cursor: pointer
+      outline: none
+      padding: 0 5px
+      margin-left: -5px
+      transition: all .3s ease-in
+      opacity: 0
+  &__poor-vision
+    display: inline-block
+    &-icon
+      height: 30px
+      display: block
+      &-main
+        background-color: $header-bg
+        color: $accent-second-hover
+        text-decoration: none
+        border-radius: 3px 0 0 3px
+        font-weight: 500
+        height: 30px
+        width: 30px
+        display: inline-block
+        line-height: 30px
+        padding: 0 5px
+        border: 1px solid $header-bg
+      &-text
+        color: $header-bg
+        text-decoration: none
+        border: 1px solid $header-bg
+        opacity: 1
+        width: 220px
+        height: 30px
+        display: inline-block
+        padding: 0 5px
+        line-height: 30px
+        border-radius: 0 3px 3px 0
+        margin-left: -5px
+.top-links
+  &_right-position
+    float: right
+  &__personal
+    font-size: 16px
+    height: 30px
+    display: inline-block
+    color: $header-bg
+    border: 1px solid $header-bg
+    border-radius: 3px
+    font-weight: 400
+    line-height: 30px
+    padding: 0 5px
+  &__personal > i
+    margin-right: 5px
+  &__personal:hover
+    background-color: $header-bg
+    color: $accent-second-hover
+    text-decoration: none
 
 
 // about company stiles
-.header_main
+.brand
+  display: block
   padding: 15px 0
-.brand:hover
-  text-decoration: none
-.brand_text
-  font-size: 24px
-  color: $accent-second
-  font-weight: 500
-.contacts
+  width: 100%
+  &:hover
+    text-decoration: none
+  &__text
+    color: $accent-second
+    font-weight: 500
+    display: inline-block
+.header-contacts
   height: 100%
   display: flex
   align-items: flex-end
   justify-content: flex-end
-.number
-  display: block
-  width: 100%
-.number > a > i
-  color: $white
-  background-color: $accent-second
-  padding: 5px
-  border-radius: 5px
-.number > .phone
-  font-size: 24px
-  color: $accent-second
-  font-weight: 500
-.number > .note
-  font-size: 18px
-  color: $accent-second
-  font-weight: 500
-
-
-
-// menu stiles
-.menu_list
+  &__wrapper
+  &__number
+    display: block
+    width: 100%
+    & > a > i
+      color: $white
+      background-color: $accent-second
+      padding: 5px
+      border-radius: 5px
+  &__phone
+    color: $accent-second
+    display: inline-block
+    font-weight: 500
+  &__note
+    font-size: 14px
+    color: $accent-second
+    font-weight: 500
+  &__call-order
+    font-size: 14px
+    color: $accent-second
+    & > i
+      margin-right: 5px
+.header-menu
   display: flex
-  margin: 0
-  padding: 0
-  list-style: none
-  width: 100%
-.menu_list:after
-  display: block
-  content: ' '
-  clear: both
-  float: none
-.menu_list > li
+  height: 44px
+  align-items: center
+  &__menu-toggle
+    display: none
+  &__search-mobile
+    display: none
+  &__call-order
+    display: none
+  &__list
+    display: flex
+    margin: 0
+    padding: 0
+    list-style: none
+    width: 100%
+  &__list:after
+    display: block
+    content: ' '
+    clear: both
+    float: none
+  &__list > li
+    float: left
+    position: relative
+    flex-basis: auto
+    flex-grow: 1
+    text-align: center
+  &__list > li > a
+    display: block
+    padding: 10px
+    color: $white
+    background-color: $accent-first
+    font-weight: 500
+    text-decoration: none
+  &__list > li > a:hover
+    background-color: $accent-first-hover
+  &__list > li:hover > .header-menu__submenu
+    display: block
+  &__submenu
+    position: absolute
+    max-width: 400px
+    min-width: 200px
+    left: 20px
+    display: none
+    list-style: none
+    padding: 0
+    margin: 0
+  &__submenu > li
+    display: block
+  &__submenu > li > a
+    display: block
+    padding: 10px
+    color: $white
+    background-color: $accent-first
+    text-decoration: none
+    font-weight: 500
+  &__submenu > li > a:hover
+    text-decoration: none
+    background-color: $accent-first-hover
+.navbar-toggle
   float: left
+  margin-left: 15px
+  display: block
+  background: transparent
+  border: 0
+  outline: none
+.navmenu
+  z-index: 1
+.canvas
   position: relative
-  flex-basis: auto
-  flex-grow: 1
-  text-align: center
-.menu_list > li > a
+  left: 0
+  z-index: 2
+  min-height: 100%
+  padding: 50px 0 0 0
+  background: #fff
+.icon-bar
   display: block
-  padding: 10px
-  color: $white
-  background-color: $accent-first
-  font-weight: 500
-  text-decoration: none
-.menu_list > li > a:hover
-  background-color: $accent-first-hover
-.submenu
-  position: absolute
-  max-width: 400px
-  min-width: 200px
-  left: 20px
-  display: none
-  list-style: none
-  padding: 0
-  margin: 0
-//  margin-top: 10px
-//.submenu:before
-  content: ''
-  position: absolute
-  left: 25%
-  top: -10px
-  border: 10px solid transparent
-  border-top: 10px solid $accent-first-hover
-.submenu > li
-  display: block
-.submenu > li > a
-  display: block
-  padding: 10px
-  color: $white
-  background-color: $accent-first
-  text-decoration: none
-  font-weight: 500
-.submenu > li > a:hover
-  text-decoration: none
-  background-color: $accent-first-hover
+  width: 33px
+  height: 4px
+  margin-bottom: 5px
+  position: relative
+  background: #cdcdcd
+  border-radius: 3px
+  z-index: 1
 
 
-
-.menu_list > li:hover > .submenu
-  display: block
+@import media

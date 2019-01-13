@@ -1,12 +1,12 @@
 $(document).ready(function() {
-    $(".top-line__search-icon").click(function () {
-            $(this).closest(".top-line__search").addClass("i-active").find("input").focus()
+    $("#topline-search__icon").click(function () {
+            $(this).closest("#topline-search").addClass("i-active").find("input").focus()
         }
     );
     $(function () {
         $(document).click(function (event) {
-            if ($(event.target).closest(".top-line__search").length) return;
-            $(".top-line__search").removeClass("i-active");
+            if ($(event.target).closest("#topline-search").length) return;
+            $("#topline-search").removeClass("i-active");
             event.stopPropagation();
         });
     });
@@ -27,4 +27,5 @@ $(document).ready(function() {
             event.stopPropagation();
         }
     );
+
 });

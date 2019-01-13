@@ -6,10 +6,10 @@ $seatch_icon: 'f002'
 .header
   display: block
   &:before
-    background-color: $accent-second-hover
+    background-color: $accent-first
     right: 0
     left: 0
-    height: 40px
+    height: 1px
     content: ''
     position: absolute
     z-index: -2
@@ -22,156 +22,98 @@ $seatch_icon: 'f002'
     content: ''
     position: absolute
     z-index: -2
-.top-line
-  height: 40px
-  &__search
-    padding: 0 5px
-    &.i-active
-      & form
-        z-index: 1
-        & > button
-          opacity: 1
-        & > input[type=search]
-          opacity: 1
-          width: 320px
-    &-icon
-      height: 30px
-      width: 30px
-      display: inline-block
-      color: $header-bg
-      border: 1px solid $header-bg
-      border-radius: 3px
-      font-weight: 400
-      line-height: 30px
-      padding: 0 7px
-    &-icon:hover
-      background-color: $header-bg
-      color: $accent-second-hover
-      text-decoration: none
-    &-icon > i
-      margin-right: 5px
-    &-icon:hover
-      outline: none
-    &-form
-      position: absolute
-      top: 0
-      left: 20px
-      z-index: -1
-      width: 350px
-    &-form > button
-      border: none
-      width: 30px
-      height: 30px
-      background: $header-bg
-      border-radius: 5px 0 0 5px
-      cursor: pointer
-      color: $accent-second
-      outline: none
-      padding: 0
-      margin: 0
-      line-height: normal
-      transition: all .3s ease-in
-      opacity: 0
-    &-form > input[type=search]
-      border: none
-      background: $header-bg
-      border-radius: 0 5px 5px 0
-      display: inline-block
-      height: 30px
-      cursor: pointer
-      outline: none
-      padding: 0 5px
-      margin-left: -5px
-      transition: all .3s ease-in
-      opacity: 0
-  &__poor-vision
-    display: inline-block
-    &-icon
-      height: 30px
-      display: block
-      &-main
-        background-color: $header-bg
-        color: $accent-second-hover
-        text-decoration: none
-        border-radius: 3px 0 0 3px
-        font-weight: 500
-        height: 30px
-        width: 30px
-        display: inline-block
-        line-height: 30px
-        padding: 0 5px
-        border: 1px solid $header-bg
-      &-text
-        color: $header-bg
-        text-decoration: none
-        border: 1px solid $header-bg
-        opacity: 1
-        width: 220px
-        height: 30px
-        display: inline-block
-        padding: 0 5px
-        line-height: 30px
-        border-radius: 0 3px 3px 0
-        margin-left: -5px
-.top-links
-  &_right-position
-    float: right
-  &__personal
-    font-size: 16px
-    height: 30px
-    display: inline-block
-    color: $header-bg
-    border: 1px solid $header-bg
-    border-radius: 3px
-    font-weight: 400
-    line-height: 30px
-    padding: 0 5px
-  &__personal > i
-    margin-right: 5px
-  &__personal:hover
-    background-color: $header-bg
-    color: $accent-second-hover
-    text-decoration: none
-
-
 // about company stiles
 .brand
-  display: block
+  display: flex
+  align-items: center
   padding: 15px 0
   width: 100%
+  outline: none
+  &__img
+    display: inline-block
+    float: left
   &:hover
     text-decoration: none
   &__text
     color: $accent-second
-    font-weight: 500
     display: inline-block
-.header-contacts
+    float: left
+    white-space: pre-wrap
+    &_md
+      font-size: 28px
+      line-height: 28px
+      font-weight: 600
+    &_lg
+      font-size: 36px
+      line-height: 36px
+      font-weight: 500
+    &_sm
+      font-size: 22px
+      line-height: 22px
+      font-weight: 600
+.search
+  display: flex
+  align-items: center
   height: 100%
+  width: 100%
+  padding: 15px 0
+  &__form
+    width: 100%
+    & > button
+      border-radius: 0 5px 5px 0
+      cursor: pointer
+      outline: none
+      padding: 0
+      width: 30px
+      height: 30px
+      margin-left: -5px
+      line-height: normal
+      border: none
+      background-color: $block-bg
+      color: $accent-second
+    & > input
+      border-radius: 5px 0 0 5px
+      display: inline-block
+      cursor: pointer
+      outline: none
+      padding: 0 5px
+      height: 30px
+      border: none
+      width: calc(100% - 30px)
+      color: $accent-second
+      background-color: $block-bg
+.phones
+  height: 100%
+  width: 100%
   display: flex
   align-items: flex-end
-  justify-content: flex-end
-  &__wrapper
+  justify-content: center
+  padding: 15px 0
+  flex-direction: column
   &__number
-    display: block
-    width: 100%
-    & > a > i
+    text-decoration: none
+    font-weight: 500
+    font-size: 18px
+    line-height: 18px
+    color: $accent-second
+    &:hover
+      text-decoration: none
+      color: $accent-second
+    &::before
       color: $white
-      background-color: $accent-second
-      padding: 5px
-      border-radius: 5px
-  &__phone
-    color: $accent-second
-    display: inline-block
-    font-weight: 500
-  &__note
-    font-size: 14px
-    color: $accent-second
-    font-weight: 500
+      background-color: $accent-first
+      padding: 5px 5px
+      margin-right: 5px
+      font-size: 16px
+      margin-bottom: 5px
   &__call-order
     font-size: 14px
     color: $accent-second
-    & > i
-      margin-right: 5px
+    display: block
+    margin-top: -10px
+    &:hover
+      text-decoration: none
+      color: $accent-first
 .header-menu
   display: flex
   height: 44px
@@ -231,31 +173,7 @@ $seatch_icon: 'f002'
   &__submenu > li > a:hover
     text-decoration: none
     background-color: $accent-first-hover
-.navbar-toggle
-  float: left
-  margin-left: 15px
-  display: block
-  background: transparent
-  border: 0
-  outline: none
-.navmenu
-  z-index: 1
-.canvas
-  position: relative
-  left: 0
-  z-index: 2
-  min-height: 100%
-  padding: 50px 0 0 0
-  background: #fff
-.icon-bar
-  display: block
-  width: 33px
-  height: 4px
-  margin-bottom: 5px
-  position: relative
-  background: #cdcdcd
-  border-radius: 3px
-  z-index: 1
+
 
 
 @import media

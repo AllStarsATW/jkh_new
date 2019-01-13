@@ -8,10 +8,10 @@ var gulpIf = require('gulp-if');
 
 var notify = require('gulp-notify');
 var plumber = require('gulp-plumber');
-var bs = require('browser-sync').create();
+var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var rigger = require('gulp-rigger');
-var reload = bs.reload;
+var reload = browserSync.reload;
 
 var del = require('del');
 var minCss = require('gulp-minify-css');
@@ -62,7 +62,7 @@ gulp.task('sass', function () {
         .pipe(prefix('last 15 versions'))
         .pipe(gulpIf(isDevelopment, sourcemap.write()))
         .pipe(gulp.dest(path.dev.css))
-        .pipe(reload({stream: true}));
+        .pipe(browserSync.stream());
 
 });
 
@@ -72,19 +72,21 @@ gulp.task('html', function () {
         .pipe(gulp.dest(path.dev.baseDir))
 });
 
-
+gulp.task('reload', function(done){
+    browserSync.reload();
+    done();
+});
 gulp.task('server', function () {
-    bs.init({
+    browserSync.init({
         server: path.dev.baseDir
     });
-    bs.watch(path.dev.baseDir + '**/*.*').on('change', bs.reload);
+    gulp.watch(path.dev.sass + '*.sass', gulp.series('sass'));
+    gulp.watch(path.dev.html + '**/*.html', gulp.series('html','reload'));
+    gulp.watch([path.dev.js + '**/*.*', path.dev.img + '**/*.*', path.dev.sources + '**/*.*', path.dev.fonts + '**/*.*']).on('change', browserSync.reload);
 });
 
-gulp.task('watch', gulp.parallel('server', function () {
-        gulp.watch(path.dev.sass + '*.sass', gulp.series('sass'));
-        gulp.watch([path.dev.html + '*.html', path.dev.baseDir + 'header.html', path.dev.baseDir + 'footer.html'], gulp.series('html'));
-    })
-);
+
+gulp.task('watch', gulp.parallel('server'));
 
 
 

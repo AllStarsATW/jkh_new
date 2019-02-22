@@ -17,56 +17,26 @@
     &__img
       max-width: 180px
     &__text
-      &_md
-        font-size: 26px
-        line-height: 26px
-        font-weight: 600
-      &_lg
-        font-size: 30px
-        line-height: 30px
-  .phones_header-theme
-    & .phones__call-order
+      font-size: 26px
+      line-height: 26px
+      font-weight: 600
+  .phones
+    &__call-order
       display: none
   .main-menu
     height: 0
     &__list
-      width: 300px
-      position: fixed
-      display: block
-      height: 100%
-      top: 0
-      left: 0
-      background-color: $accent-first
-      z-index: 1000
-      padding: 50px 5px
-      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0)
-      transform: translate(-100%, 0) //(-100%, 0)
-      &.i-active
-        transform: translate(0, 0)
-
-    &__overlay.i-active
-      display: block
-    &__mobile-exit
-      display: block
-
+      display: none
 @media screen and (max-width: 768px)
   .brand
     &__img
       max-width: 160px
     &__text
-      &_md
-        font-size: 24px
-        line-height: 24px
-        font-weight: 500
-      &_lg
-        font-size: 28px
-        line-height: 28px
-      &_sm
-        font-size: 20px
-        line-height: 20px
-        font-weight: 500
-  .phones_header-theme
-    & .phones__number
+      font-size: 24px
+      line-height: 24px
+      font-weight: 500
+  .phones
+    &__number
       &::before
         display: none
     & > a
@@ -78,14 +48,6 @@
     &__img
       max-width: 140px
     &__text
-      &_md
-        font-size: 22px
-        line-height: 22px
-        font-weight: 500
-      &_lg
-        font-size: 26px
-        line-height: 26px
-      &_sm
-        font-size: 18px
-        line-height: 18px
-        font-weight: 500
+      font-size: 22px
+      line-height: 22px
+      font-weight: 500

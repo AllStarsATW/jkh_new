@@ -17,10 +17,17 @@
     content: ''
     position: absolute
     z-index: -2
-.fixed
-  position: fixed
-  top: 0
-  width: 100%
+  &-faded
+    position: fixed
+    transform: translate(0, -100%)
+    top: 0
+    width: 100%
+  &-fixed
+    position: fixed
+    top: 0
+    width: 100%
+    transform: translate(0, 0)
+    transition: all .1s ease-in
 .main-overlay
   position: fixed
   width: 100%
@@ -51,7 +58,7 @@
   &.i-active
     transform: translate(0, 0)
 .search-mobile
-  width: 100%
+  width: calc(100% - 30px)
   display: flex
   align-items: start
   padding: 0 20px 20px 20px
@@ -74,13 +81,34 @@
       padding: 0
       outline: none
       position: absolute
-      right: 24px
+      right: 54px
       top: 24px
 .mobile-menu
   width: 100%
   display: block
   border-top: 1px solid $block-bg
   position: relative
+  &__exit-button
+    background-color: transparent
+    border: 0
+    z-index: 1000
+    display: block
+    width: 30px
+    height: 30px
+    position: absolute
+    right: 10px
+    top: 32px
+    & > span
+      display: block
+      width: 30px
+      height: 4px
+      position: relative
+      border-radius: 3px
+      background-color: $accent-first_hover
+      &:first-child
+        transform: rotate(45deg) translate(1px, 0)
+      &:last-child
+        transform: rotate(-45deg) translate(3px, -2px)
   &__list
     display: block
     width: 100%
@@ -156,6 +184,7 @@
   padding: 15px 0
   width: 100%
   outline: none
+
   &__img
     display: inline-block
     float: left
@@ -170,19 +199,9 @@
     display: inline-block
     white-space: pre-wrap
     float: left
-    &_md
-      font-size: 28px
-      line-height: 28px
-      font-weight: 600
-    &_lg
-      font-size: 32px
-      line-height: 32px
-      font-weight: 500
-    &_sm
-      font-size: 22px
-      line-height: 22px
-      font-weight: 600
-  &_header-theme .brand__text
+    font-size: 32px
+    line-height: 32px
+    font-weight: 500
     color: $accent-second
 
 .search
@@ -190,40 +209,34 @@
   align-items: center
   flex-direction: column
   justify-content: center
+  height: 100%
+  width: 100%
+  padding: 15px 0
   &__form
+    width: 100%
     & > button
       cursor: pointer
       outline: none
       padding: 0
       line-height: normal
+      width: 40px
+      height: 40px
+      margin-left: -5px
+      border: none
+      border-radius: 0 5px 5px 0
+      background-color: $block-bg
+      color: $accent-second
     & > input
       display: inline-block
       cursor: pointer
       outline: none
-    &_lg > button
-      width: 40px
-      height: 40px
-      margin-left: -5px
-    &_lg > input
       padding: 0 10px
       height: 40px
       width: calc(100% - 40px)
-    &_md > button
-      width: 30px
-      height: 30px
-      margin-left: -5px
-    &_md > input
-      padding: 0 10px
-      height: 30px
-      width: calc(100% - 30px)
-    &_sm > button
-      width: 20px
-      height: 20px
-      margin-left: -5px
-    &_sm > input
-      padding: 0 5px
-      height: 20px
-      width: calc(100% - 20px)
+      border-radius: 5px 0 0 5px
+      border: none
+      color: $accent-second
+      background-color: $block-bg
   &__examples
     display: block
     width: 100%
@@ -238,24 +251,6 @@
         content: ','
       &:last-child:after
         content: ''
-  &_header-theme
-    height: 100%
-    width: 100%
-    padding: 15px 0
-    & .search__form
-      width: 100%
-      & > button
-        border: none
-        border-radius: 0 5px 5px 0
-        background-color: $block-bg
-        color: $accent-second
-      & > input
-        border-radius: 5px 0 0 5px
-        border: none
-        color: $accent-second
-        background-color: $block-bg
-
-
 .header-icons
   display: none
   align-items: center
@@ -268,15 +263,10 @@
     background-color: $accent-first
     color: $white
     margin-right: 10px
-    &_md
-      font-size: 20px
-      padding: 5px 10px
-    &_lg
-      font-size: 24px
-      padding: 7px 13px
-    &_sm
-      font-size: 16px
-      padding: 3px 7px
+    font-size: 20px
+    padding: 5px 10px
+    &:hover
+      color: $white
   &__menu-toggle
     display: block
     position: relative
@@ -284,121 +274,55 @@
     user-select: none
     border: 1px solid $block-bg_hover
     background-color: $white
-    & input
-      display: block
-      position: absolute
-      top: -7px
-      left: -5px
-      cursor: pointer
-      opacity: 0
-      z-index: 2
-      -webkit-touch-callout: none
+    padding: 8px 4px
     & span
       display: block
       position: relative
       border-radius: 3px
       z-index: 1
       background: $block-bg_hover
+      width: 30px
+      height: 4px
+      margin-bottom: 5px
       &:last-child
         margin-bottom: 0
-    &_md
-      padding: 8px 4px
-      & input
-        width: 40px
-        height: 40px
-        top: 0
-        left: 0
-      & span
-        width: 30px
-        height: 4px
-        margin-bottom: 5px
-    &_lg
-      padding: 10px 4px
-      & input
-        width: 50px
-        height: 50px
-        top: 0
-        left: 0
-      & span
-        width: 40px
-        height: 6px
-        margin-bottom: 5px
-    &_sm
-      padding: 5px 4px
-      & input
-        width: 30px
-        height: 30px
-        top: 0
-        left: 0
-      & span
-        width: 20px
-        height: 4px
-        margin-bottom: 3px
-    &.mobile-exit
-      background-color: transparent
-      border: 0
-      z-index: 1000
-      display: block
+    &:hover
+      background-color: $accent-first
+      border: 1px solid $accent-first
       & > span
-        display: block
-        width: 30px
-        height: 4px
-        position: relative
-        border-radius: 3px
-        background-color: $white
-        transition: all .2s ease-in
-        &:nth-child(2)
-          display: none
-        &:first-child
-          transform: rotate(45deg) translate(4px, 3px)
-        &:last-child
-          transform: rotate(-45deg) translate(3px, -2px)
+        background: $white
 .phones
   display: flex
   align-items: flex-end
   justify-content: center
   flex-direction: column
+  height: 100%
+  width: 100%
+  padding: 15px 0
   &__number
     text-decoration: none
-    &_lg
-      font-weight: 500
-      font-size: 24px
-      line-height: 24px
-    &_md
-      font-weight: 500
-      font-size: 18px
-      line-height: 18px
-    &_sm
-      font-weight: 500
-      font-size: 14px
-      line-height: 14px
+    font-weight: 500
+    font-size: 18px
+    line-height: 18px
+    color: $accent-second
     &:hover
       text-decoration: none
+      color: $accent-second
+    &::before
+      color: $white
+      background-color: $accent-first
+      padding: 5px 5px
+      margin-right: 5px
+      font-size: 16px
+      margin-bottom: 5px
   &__call-order
     font-size: 14px
     display: block
+    color: $accent-second
+    margin-top: -10px
     &:hover
       text-decoration: none
-  &_header-theme
-    height: 100%
-    width: 100%
-    padding: 15px 0
-    & .phones__number
-      color: $accent-second
-      &:hover
-        color: $accent-second
-      &::before
-        color: $white
-        background-color: $accent-first
-        padding: 5px 5px
-        margin-right: 5px
-        font-size: 16px
-        margin-bottom: 5px
-    & .phones__call-order
-      color: $accent-second
-      margin-top: -10px
-      &:hover
-        color: $accent-first
+      color: $accent-first
 
 
 .main-menu
